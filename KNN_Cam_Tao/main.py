@@ -2,7 +2,7 @@ import numpy as np
 
 cam = np.array([2.7887, 6.5063, 9.4425, 9.8402, -19.5930])
 tao = np.array([2.6743, 5.7745, 9.9031, 11.0016, -21.4722])
-# test = numpy.array([2.6588, 5.7358, 9.6682, 10.7427, -20.9914])
+# test = numpy.array([2.6588, 5.7358, 9.6682, 10.7427, -20.9914]) 
 
 test = np.array(list(map(float, input("Type input vector test: ").split())))
 
