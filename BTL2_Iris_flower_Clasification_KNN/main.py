@@ -4,9 +4,9 @@
  cột class
 
  Mau test
-     1   5.1,3.5,1.4,0.2,Iris-setosa
-     51  7.0,3.2,4.7,1.4,Iris-versicolor
-     101 6.3,3.3,6.0,2.5,Iris-virginica
+     1   5.1,3.5,1.4,0.2, Iris-setosa
+     51  7.0,3.2,4.7,1.4, Iris-versicolor
+     101 6.3,3.3,6.0,2.5, Iris-virginica
  Mau train
      iris-147.data
 '''
@@ -28,22 +28,26 @@ test_vector = np.array(list(map(float, input("Nhập vector test gồm 4 đặc 
 
 # Hàm tính khoảng cách Manhattan
 def manhattan_distance(row):
-    # Bỏ qua cột 'Class'
-    return np.sum(np.abs(test_vector - row[:-1]))
+    return np.sum(np.abs(test_vector - row.iloc[:4]))
 
-# Tính khoảng cách cho từng mẫu và thêm vào cột 'distance'
-data_iris['Distance'] = data_iris.apply(manhattan_distance, axis=1)
+# Hàm tính khoảng cách Euclidean
+def euclidean_distance(row):
+    return round(np.sqrt(np.sum(np.square(test_vector - row.iloc[:4]))), 3)
 
-# In khoảng cách từ vector test đến từng mẫu
-# print("\nKhoảng cách từ vector test đến từng mẫu:")
-# print(data_iris[['Class', 'Distance']])
+# Tính khoảng cách Manhattan cho từng mẫu và thêm vào cột 'Manhattan_Distance'
+data_iris['Manhattan_Distance'] = data_iris.apply(manhattan_distance, axis=1)
 
-# Sắp xếp theo khoảng cách và lấy K hàng đầu tiên (khoảng cách nhỏ nhất)
-nearest_rows = data_iris.nsmallest(k_value, 'Distance')
+# Tính khoảng cách Euclidean cho từng mẫu và thêm vào cột 'Euclidean_Distance'
+data_iris['Euclidean_Distance'] = data_iris.apply(euclidean_distance, axis=1)
 
-print(f"\n{k_value} mẫu có khoảng cách nhỏ nhất:")
-print(nearest_rows[['Class', 'Distance']])
+# Sắp xếp theo khoảng cách Manhattan và lấy K hàng đầu tiên
+nearest_manhattan = data_iris.nsmallest(k_value, 'Manhattan_Distance')
 
-# Nếu muốn in lớp và khoảng cách của mẫu gần nhất nhất
-print(f"\nKết quả: Vector test thuộc class {nearest_rows.iloc[0]['Class']} với khoảng cách nhỏ nhất là {nearest_rows.iloc[0]['Distance']:.2f}")
+# Sắp xếp theo khoảng cách Euclidean và lấy K hàng đầu tiên
+nearest_euclidean = data_iris.nsmallest(k_value, 'Euclidean_Distance')
 
+print(f"\n{k_value} mẫu có khoảng cách Manhattan nhỏ nhất:")
+print(nearest_manhattan[['Class', 'Manhattan_Distance']])
+
+print(f"\n{k_value} mẫu có khoảng cách Euclidean nhỏ nhất:")
+print(nearest_euclidean[['Class', 'Euclidean_Distance']])
