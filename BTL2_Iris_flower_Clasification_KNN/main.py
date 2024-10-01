@@ -12,25 +12,20 @@
 '''
 import pandas as pd
 import numpy as np
+from collections import Counter
 
-# Định nghĩa các cột cho tập dữ liệu Iris
 columns = ['sepal length (cm)', 'sepal width (cm)', 'petal length (cm)', 'petal width (cm)', 'Class']
 
-# Đọc file CSV và gán tên cột
 data_iris = pd.read_csv("iris-147.data", header=None, names=columns)
 
-# Tạo bản sao của DataFrame
 data_iris = data_iris.copy()
 
-# Nhập vector test từ người dùng
 k_value = int(input("Nhập giá trị K: "))
 test_vector = np.array(list(map(float, input("Nhập vector test gồm 4 đặc trưng: ").split(','))))
 
-# Hàm tính khoảng cách Manhattan
 def manhattan_distance(row):
     return np.sum(np.abs(test_vector - row.iloc[:4]))
 
-# Hàm tính khoảng cách Euclidean
 def euclidean_distance(row):
     return round(np.sqrt(np.sum(np.square(test_vector - row.iloc[:4]))), 3)
 
@@ -51,3 +46,15 @@ print(nearest_manhattan[['Class', 'Manhattan_Distance']])
 
 print(f"\n{k_value} mẫu có khoảng cách Euclidean nhỏ nhất:")
 print(nearest_euclidean[['Class', 'Euclidean_Distance']])
+
+# Xác định lớp chiếm ưu thế cho khoảng cách Manhattan
+manhattan_classes = nearest_manhattan['Class'].tolist()
+manhattan_most_common = Counter(manhattan_classes).most_common(1)[0]
+print(f"\n(Mahattan distance) Vector test thuộc Class: {manhattan_most_common[0]} ({manhattan_most_common[1]} lần)")
+
+# Xác định lớp chiếm ưu thế cho khoảng cách Euclidean
+euclidean_classes = nearest_euclidean['Class'].tolist()
+euclidean_most_common = Counter(euclidean_classes).most_common(1)[0]
+print(f"(Euclidean distance) Vector test thuộc Class: {euclidean_most_common[0]} ({euclidean_most_common[1]} lần)")
+
+# 1.0,4.2,5.7,1.9
