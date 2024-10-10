@@ -5,4 +5,5 @@
 
 ```
 |--Face Recognition Using Teachable Machine
-|--
+|  |-- (https://teachablemachine.withgoogle.com/v1)
+|  |-- (https://teachablemachine.withgoogle.com)
