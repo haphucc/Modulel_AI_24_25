@@ -5,5 +5,5 @@
 
 
 |--Face Recognition Using Teachable Machine 
-|  |-- [title]([http://~](https://teachablemachine.withgoogle.com/v1/)) 
+|  |-- [https://teachablemachine.withgoogle.com/v1](https://teachablemachine.withgoogle.com/v/)
 |  |-- [https://teachablemachine.withgoogle.com](https://teachablemachine.withgoogle.com) 
