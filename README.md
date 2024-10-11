@@ -17,7 +17,8 @@
 ├─── Hu's moments Feature
 │    ├─── Exercise
 │    ├─── Find 7 features for a leaf
-├─── BTL3: K Means Strawberry
+├─── K-Means gom cụm tách nền bông hoa
+├─── BTL3: K-Means Strawberry
 
 
 
