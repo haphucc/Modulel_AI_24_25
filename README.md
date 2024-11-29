@@ -14,11 +14,13 @@
 ├─── Đánh giá độ ngọt - chua của quả xoài
 ├─── BTL1: Pen Detection grid-by-grid Comparison
 ├─── BTL2: Iris flower Clasification KNN 
-├─── Hu's moments Feature
+├─── Hu's moments Feature & HOG Feature
 │    ├─── Exercise
 │    ├─── Find 7 features for a leaf
 ├─── K-Means gom cụm tách nền bông hoa
-├─── BTL3: K-Means Ripe Fruit Detect
+├─── K-Means Ripe Fruit Detect
+├─── BTL3: ANN
+├─── THI CUỐI KỲ
 
 
 
